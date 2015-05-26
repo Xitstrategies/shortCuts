@@ -1,0 +1,4 @@
+ssh morgan@sys5a.tradetech.net
+ssh morgan@sys5b.tradetech.net
+
+sudo scp morgan@dev.tradetech.net:/spec/SyrinxDesktop.stable/cgi/global_margin.pl /spec/SyrinxDesktop/cgi
