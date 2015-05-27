@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#sh vmDebs
+#local virtualbox
+ssh -p 5679 root@localhost
