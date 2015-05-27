@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#sh quickdeployfile
+
+#edit the file you want to transfer over, -r for recursive,
+#but try not to use this function for larger deployments like that.
+#always remember to update both servers, so once you have run this for
+#the uncommented out server name, then comment that one out and uncomment
+#out the other and run it again.
+
+ssh morgan@sys5a.tradetech.net
+#ssh morgan@sys5b.tradetech.net
+
+sudo scp morgan@dev.tradetech.net:/spec/SyrinxDesktop.stable/cgi/global_margin.pl /spec/SyrinxDesktop/cgi

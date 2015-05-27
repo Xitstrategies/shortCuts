@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#copy of my git config 5/22/15
+
+#git config --global user.name 'Morgan Heimbeck'
+#git config --global user.email 'morgan@tradetech.net'
+#git config --global core.autocrlf input
+#git config --global merge.tool p4merge
+#git config --global mergetool "p4merge" p4merge.path '/Applications/p4merge.app/Contents/MacOS/p4merge'
+
+git config --global color.ui true
+git config --global alias.lg 'log --oneline --decorate --all --graph'
+git config --global alias.sl 'stash list'
+git config --global alias.ss 'stash save'
+git config --global alias.sp 'stash pop'
+git config --global alias.br branch
+git config --global alias.cg 'config --global'
+git config --global alias.cl 'config --local'
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.cm 'checkout master'
+git config --global alias.rb 'rebase master'
+git config --global alias.mg merge
+git config --global alias.s status
+
+#git config --global rerere.enabled = true
+#git config --global push.default = matching
