@@ -22,6 +22,7 @@ git config --global alias.cm 'checkout master'
 git config --global alias.rb 'rebase master'
 git config --global alias.mg merge
 git config --global alias.s status
+git config --global alias.pr 'pull --rebase'
 
 #git config --global rerere.enabled = true
 #git config --global push.default = matching

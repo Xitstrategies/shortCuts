@@ -1,0 +1,6 @@
+#!/bin/sh
+
+tagName=$1
+dockerFile=$2
+
+docker build -t tradetech/morgan:$tagName $dockerFile

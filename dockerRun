@@ -1,0 +1,7 @@
+#!/bin/sh
+
+tagName=$1
+gitVersion=$2
+bucket=$3
+
+docker run -e "tagVersion=$gitVersion" -e "bucket=$bucket" -it --rm tradetech/morgan:$tagName

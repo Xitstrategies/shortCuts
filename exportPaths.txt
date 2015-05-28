@@ -6,12 +6,14 @@ export PATH=/spec/SyrinxDesktop/node-v0.12.0-linux-x64/bin/:/spec/SyrinxDesktop/
 
 
 /*  deployment Process
+
+--API--
+
+deploy API and any UI1 deps for API
+
 --UI1--
 
 www.tradetech.net
-log in to TTI, Admin, Edit LangTrans, Build
-
-dev.tradetech.net
 log in to TTI, Admin, Edit LangTrans, Build
 
 --local--
@@ -21,12 +23,6 @@ git commit -am 'LangTrans Update'
 git push
 grunt pre-deploy:15.12
 
---ssh--
+--tower--
 
-ssh morgan@dev.tradetech.net
-export PATH=/spec/SyrinxDesktop.edge/node-v0.12.0-linux-x64/bin/:/spec/SyrinxDesktop.edge/www/js_app/node_modules/grunt-cli/bin/:$PATH
-(cd /spec/SyrinxDesktop.stable/www/js_app/ && ./checkoutBranch.sh 1.15.12 && grunt build)
-
-ssh morgan@sys5a/b.tradetech.net
-export PATH=/spec/SyrinxDesktop/node-v0.12.0-linux-x64/bin/:/spec/SyrinxDesktop/www/js_app/node_modules/grunt-cli/bin/:$PATH
-(sudo cd /spec/SyrinxDesktop/www/js_app/ && ./checkoutBranch.sh 1.15.12 && grunt build)
+click front end deployment and pass version number and bucket to push to
