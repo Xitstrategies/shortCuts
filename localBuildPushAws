@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#local deploy and push
+cd ~/WebstormProjects/syrinx/desktop/www/
+
+grunt --gruntfile=./js_app/Gruntfile.js build
+
+aws s3 cp ./js_app/dist/bundles/tt/*.js s3://tradetech-dev/public/syrinxdesktop/media/js/
+aws s3 cp ./js_app/dist/bundles/tt/*.css s3://tradetech-dev/public/syrinxdesktop/media/css/
+
+echo "Done"

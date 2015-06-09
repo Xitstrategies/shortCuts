@@ -7,22 +7,21 @@
 #git config --global core.autocrlf input
 #git config --global merge.tool p4merge
 #git config --global mergetool "p4merge" p4merge.path '/Applications/p4merge.app/Contents/MacOS/p4merge'
-
-git config --global color.ui true
-git config --global alias.lg 'log --oneline --decorate --all --graph'
-git config --global alias.sl 'stash list'
-git config --global alias.ss 'stash save'
-git config --global alias.sp 'stash pop'
-git config --global alias.br branch
 git config --global alias.cg 'config --global'
-git config --global alias.cl 'config --local'
-git config --global alias.co checkout
-git config --global alias.ci commit
-git config --global alias.cm 'checkout master'
-git config --global alias.rb 'rebase master'
-git config --global alias.mg merge
-git config --global alias.s status
-git config --global alias.pr 'pull --rebase'
+git cg color.ui true
+git cg alias.lg 'log --oneline --decorate --all --graph'
+git cg alias.sl 'stash list'
+git cg alias.ss 'stash save'
+git cg alias.sp 'stash pop'
+git cg alias.br branch
+git cg alias.cl 'config --local'
+git cg alias.co checkout
+git cg alias.ci commit
+git cg alias.cm 'checkout master'
+git cg alias.rb 'rebase master'
+git cg alias.mg merge
+git cg alias.s status
+git cg alias.pr 'pull --rebase'
 
 #git config --global rerere.enabled = true
 #git config --global push.default = matching
