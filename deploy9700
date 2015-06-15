@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ssh morgan@dev.tradetech.net /opt/python/bin/aws s3 cp s3://tradetech-dev/public/syrinxdesktop/production.html /spec/SyrinxDesktop.stable/www/production.html

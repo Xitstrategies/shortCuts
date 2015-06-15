@@ -1,0 +1,7 @@
+filePro Notes
+
+
+cd /appl/filepro
+fgrep Ftariff */prc.* | fgrep -v fpwebbrowse | fgrep -v prc.fixacct | fgrep -v prc.fixpcode fgrep -v fpwebedit | m
+
+fptrace needs to do it!
