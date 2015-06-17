@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -n "$1" ]
+then
+    git tag -d $1 && git push origin :refs/tags/$1
+else
+    echo "please enter the tag to delete"
+fi

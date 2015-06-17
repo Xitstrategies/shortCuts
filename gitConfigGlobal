@@ -23,5 +23,7 @@ git cg alias.mg merge
 git cg alias.s status
 git cg alias.pr 'pull --rebase'
 
+git cg alias.prush 'pr && push'
+
 #git config --global rerere.enabled = true
 #git config --global push.default = matching
