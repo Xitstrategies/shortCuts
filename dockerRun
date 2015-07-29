@@ -4,7 +4,7 @@
 #gitVersion=$2   1.13.15
 #BUCKET=$3   tradetech-dev
 
-if [-n "$1" && -n "$2" && -n "$3"]; then
+if [ -n "$1" ] && [ -n "$2" ] && [ -n "$3" ]; then
     docker run -e "TAGVERSION=$2" -e "BUCKET=$3" -it --rm tradetech/morgan:$1
 else
     echo "You forgot to enter Docker Tag Name 'nodejs-build-1', Git Version '1.12.14',
