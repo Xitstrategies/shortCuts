@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#$1 = user name for ssh
+#$2 = git tag
+#$3 = copy production file from a local path from where you are running this command or pull down from a bucket
+#ex. ~/WebstormProjects/syrinx/desktop/www/s3_production.html
+
+#start with ssh to dev, then update the dataengine to the most recent version
+#
+copy=""
+if [ -n "$1" ] && [ -n "$2" ]; then
+
+    if [ "$3" == "prod" ] || [ "$3" == "dev" ]; then
+        copy="/opt/python/bin/aws s3 cp s3://tradetech-$3/public/syrinxdesktop/production.html ./production.html &&"
+    elif [ -n "$3" ]; then
+        scp $3 $1@dev.tradetech.net:/spec/SyrinxDesktop.stable/www/production.html;
+    else
+        echo "please enter a file path to the production html you want to update 9700 with, or say dev/prod to use those buckets"
+    fi
+ssh $1@dev.tradetech.net "
+cd /spec/SyrinxDesktop.stable/www/ &&
+git fetch -pt &&
+git checkout -b p"$2" v"$2" && "$copy" exit"
+
+else
+    echo "you have to enter a user name to ssh to dev and a git tag like 1.12.18"
+fi

@@ -22,8 +22,9 @@ git cg alias.rb 'rebase master'
 git cg alias.mg merge
 git cg alias.s status
 git cg alias.pr 'pull --rebase'
-
-git cg alias.prush 'pr && push'
+git cg alias.prush '!git pr && git push'
+git cg alias.dtag "!f() { git tag -d $1 && git push origin :refs/tags/$1; }; f"
+git cg alias.pu="!f() { git cm && git pr && git rb $1 && git cm && git mg $1 && git push; }; f"
 
 #git config --global rerere.enabled = true
 #git config --global push.default = matching

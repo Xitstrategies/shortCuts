@@ -1,0 +1,26 @@
+/*  deployment Process
+
+--FieldAliases--
+
+deploy SyrinxFieldAliases
+-API needs to be restarted to make this change go in to effect.
+If you have to pull changes for an API deployment, that is going to need to restart it anyways
+
+--API--
+
+deploy API and any UI1 dependencies for API
+
+--local--
+
+cd scripts/ && ./tagging.sh 12.14
+
+--tower--
+
+click front end build and pass version number 1.12.14 and bucket to push to
+
+need to update 9700
+ssh morgan@dev.tradetech.net && cd /spec/SyrinxDesktop.releaseCandidate
+&& git fetch -pt && git co -b p$1 v$1
+&& /opt/python/bin/aws s3 cp s3://$2/public/syrinxdesktop/production.html ./www/production.html
+
+click front end want to deploy to LIVE!

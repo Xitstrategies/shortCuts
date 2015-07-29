@@ -1,7 +1,12 @@
 #!/bin/sh
 
-tagName=$1
-gitVersion=$2
-bucket=$3
+#dockerTagName=$1   front-end-build
+#gitVersion=$2   1.13.15
+#BUCKET=$3   tradetech-dev
 
-docker run -e "tagVersion=$gitVersion" -e "bucket=$bucket" -it --rm tradetech/morgan:$tagName
+if [-n "$1" && -n "$2" && -n "$3" && -n "$4"]; then
+    docker run -e "TAGVERSION=$2" -e "BUCKET=$3" -it --rm tradetech/morgan:$1
+else
+    echo "You forgot to enter Docker Tag Name 'nodejs-build-1', Git Version '1.12.14',
+    Bucket 'tradetech-dev', and Production HTML Link 'dev'/'prod'/'~/localpath/to/www'"
+fi
