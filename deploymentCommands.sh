@@ -2,36 +2,29 @@
 
 
 DO NOT RUN THIS AS A SCRIPT!!!
-#stuff
-ssh morgan@dev.tradetech.net
-
-ssh morgan@sys5a.tradetech.net
-ssh morgan@sys5b.tradetech.net
 
 #dev
 #after updating syrinx field aliases
 cd /spec/Syrinx.edge/ && stopDE && cd /spec/Syrinx.ApiEdge/ && stopDE && cd /spec/Syrinx.releaseCandidate/ && stopDE
 
+cd /spec/SyrinxDesktop.stable/ && git fetch -pt && git co -b p1.14.17 v1.14.17 && cd www && aws s3 cp s3://tradetech-prod/public/syrinxdesktop/production.html ./s3.html && cp s3.html production.html && rm s3.html && cd /spec/Syrinx.releaseCandidate && stopDE
+
 #live
-cd /spec/SyrinxDesktop/ && sudo git fetch -pt && sudo git checkout -b p1.13.3 v1.13.3
+cd /spec/SyrinxDesktop/ && sudo git fetch -pt && sudo git checkout -b p1.15.1 v1.15.1 && cd /spec/Syrinx/ && stopDE
 
-cd /spec/SyrinxFieldAliases/ && git checkout master && git pull origin master
 
-cd /spec/Syrinx/ && sudo git checkout master && sudo git pull origin master && sudo git checkout -b v3.0.7 8a62ed307dc && stopDE
+cd /spec/Syrinx/etc && vim config
+cd /spec/Syrinx/ && sudo git checkout master && sudo git pull origin master && sudo git checkout -b v3.1.1 && stopDE
 
-ssh morgan@dev.tradetech.net "cd /spec/Syrinx.releaseCandidate &&
+ssh @.tradetech.net "cd /spec/Syrinx.releaseCandidate &&
 git checkout master && git pull origin master && \n
 git checkout -b v3.0.4 && stopDE && \n
 cd /spec/SyrinxDesktop.stable/ && git fetch -pt && git checkout -b p1.13.1 v1.13.1"
-scp ~/WebstormProjects/syrinx/desktop/www/production.html morgan@dev.tradetech.net:/spec/SyrinxDesktop.stable/www/production.html
+
+scp  ~/WebstormProjects/syrinx/desktop/www/s3_production.html @.tradetech.net:/spec/SyrinxDesktop/www/s3.html
 
 
-aws cloudfront create-invalidation --distribution-id E8UBNPODBDJQH --invalidation-batch {"Paths": {"Quantity":13,"Items":["/langtrans/js/*.js"]},"CallerReference": "2015-07-01 13:53 PST"}
-#E8UBNPODBDJQH
+aws cloudfront create-invalidation --distribution-id E8UBNPODBDJQH --invalidation-batch file://awsInvalidLangTrans.json
+aws cloudfront create-invalidation --cli-input-json file://awsInvalidImagesLangTrans.json
 
-aws s3 cp s3://tradetech-dev/public/syrinxdesktop/media/js/tt-1435704859.js s3://tradetech-prod/public/syrinxdesktop/media/js/
-aws s3 cp s3://tradetech-dev/public/syrinxdesktop/media/css/tt-1435704859.css s3://tradetech-prod/public/syrinxdesktop/media/css/
-aws s3 cp s3://tradetech-dev/public/syrinxdesktop/production.html s3://tradetech-prod/public/syrinxdesktop/
-aws s3 cp s3://tradetech-dev/public/syrinxdesktop/favicon.ico s3://tradetech-prod/public/syrinxdesktop/
-aws s3 sync ~/WebstormProjects/syrinx/www/images_app/global/co_brand/ s3://tradetech-dev/public/syrinxdesktop/media/images/co_brand/
-aws s3 sync ~/WebstormProjects/syrinx/www/images_app/global/co_brand/ s3://tradetech-prod/public/syrinxdesktop/media/images/co_brand/
+cd /spec/Syrinx/ && sudo git checkout master && sudo git pull origin master && sudo git checkout -b v3.1.1 && cd /spec/SyrinxDesktop/ && sudo git fetch -pt && sudo git checkout -b p1.14.15 v1.14.15 && cd /spec/Syrinx/ && stopDE
